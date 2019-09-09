@@ -1,0 +1,19 @@
+class Solution {
+    public boolean wordPattern(String pattern, String str) {
+       String []words=str.split(" ", pattern.length());
+      
+        char[] ab = pattern. toCharArray();
+        for(int i=0;i<words.length-1;i++){
+            if(ab[i]==ab[i+1]){
+                if(words[i].equals(words[i+1])==false){
+                    return false;
+                }
+            }else{
+                if(words[i].equals(words[i+1])==true){
+                return false;
+                }
+            }
+        }
+        return true;
+    }
+}
