@@ -1,0 +1,54 @@
+class Solution {
+    public int hammingDistance(int x, int y) {  
+        int []a={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+        int []b={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+        
+        int j=31;  
+        for(int i=0;i<32;i++){
+            if(x/Math.pow(2,j)<1){
+                j--;
+                continue;
+            }else if(x/Math.pow(2,j)==1){
+                a[i]=1;
+                break;
+            }else{
+                a[i]=1;
+                x=x-(int)Math.pow(2,j);
+                j--;
+            }
+            }
+            
+        j=31;
+        for(int i=0;i<32;i++){
+            if(y/Math.pow(2,j)<1){
+                j--;
+                continue;
+            }else if(y/Math.pow(2,j)==1){
+                b[i]=1;
+                break;
+            }else{
+                b[i]=1;
+                y=y-(int)Math.pow(2,j);
+                j--;
+            }
+            
+        }
+        for(int l:a){
+            System.out.print(l);
+        }
+        System.out.println(" ");
+        for(int l:b){
+            System.out.print(l);
+        }
+        System.out.println(" ");
+        
+        int distance=0;
+        for(int i=0;i<32;i++){
+            if(a[i]!=b[i]){
+                distance++;
+            }
+        }
+        return distance;
+    }
+    
+}
